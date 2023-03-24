@@ -10,8 +10,8 @@ import (
 	"net/url"
 	"path/filepath"
 
-	"github.com/openfaas/faas-provider/auth"
-	"github.com/openfaas/faas-provider/types"
+	"github.com/Amin-MAG/faas-provider/auth"
+	"github.com/Amin-MAG/faas-provider/types"
 )
 
 // SDK is an SDK for managing OpenFaaS functions

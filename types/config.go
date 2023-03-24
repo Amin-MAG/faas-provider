@@ -16,6 +16,11 @@ type FaaSHandlers struct {
 	// use the standard OpenFaaS proxy implementation or provide completely custom proxy logic.
 	FunctionProxy http.HandlerFunc
 
+	// Workflow Proxy
+	Flows      http.HandlerFunc
+	FlowProxy  http.HandlerFunc
+	FlowReader http.HandlerFunc
+
 	FunctionReader http.HandlerFunc
 	DeployHandler  http.HandlerFunc
 

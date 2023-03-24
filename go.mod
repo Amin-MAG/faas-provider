@@ -1,6 +1,6 @@
-module github.com/openfaas/faas-provider
+module github.com/Amin-MAG/faas-provider
 
-go 1.17
+go 1.18
 
 require (
 	github.com/gorilla/mux v1.8.0
