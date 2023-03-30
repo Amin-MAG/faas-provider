@@ -211,7 +211,7 @@ func NewFlowHandler(config types.FaaSConfig, redisClient *redis.Client, resolver
 				hashString := fmt.Sprintf("%x", hashBytes)
 
 				// Save the response
-				redisClient.SetEx(r.Context(), hashString, childResponseBody, 10*time.Minute)
+				redisClient.SetEx(r.Context(), hashString, childResponseBody, time.Duration(flows.Flows[child.Function].CacheTTL)*time.Second)
 			}
 
 			fmt.Println(string(childResponseBody))
