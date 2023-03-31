@@ -134,6 +134,7 @@ func NewFlowHandler(config types.FaaSConfig, redisClient *redis.Client, resolver
 
 		// Try find the cache if it is enabled for function
 		if config.EnableCaching && flow.Caching {
+			requestBody["openfaas_flow_function_name"] = functionName
 			reqBody, err := json.Marshal(requestBody)
 			if err != nil {
 				fmt.Printf("error in marshalling args of function %s for caching: %s\n", functionName, err.Error())
@@ -227,7 +228,9 @@ func NewFlowHandler(config types.FaaSConfig, redisClient *redis.Client, resolver
 
 		// Cache the response of the function
 		if config.EnableCaching && flow.Caching {
-			reqBody, err := json.Marshal(flowInput.Args)
+			requestBody = flowInput.Args
+			requestBody["openfaas_flow_function_name"] = functionName
+			reqBody, err := json.Marshal(requestBody)
 			if err != nil {
 				fmt.Printf("error in marshalling args of function %s for caching: %s\n", functionName, err.Error())
 			}
