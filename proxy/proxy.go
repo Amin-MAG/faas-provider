@@ -167,6 +167,14 @@ func NewFlowHandler(config types.FaaSConfig, redisClient *redis.Client, resolver
 				args[argField] = flowInput.Args[mapField]
 			}
 
+			// Creating the URL of child for internal and third parties
+			var destURL string
+			if flow.IsThirdParty {
+				destURL = *flow.ThirdPartyURL
+			} else {
+				destURL = fmt.Sprintf("http://127.0.0.1:8081/flow/%s", child.Function)
+			}
+
 			// Proxy the child function
 			childRequestBody, err := json.Marshal(args)
 			if err != nil {
@@ -174,7 +182,7 @@ func NewFlowHandler(config types.FaaSConfig, redisClient *redis.Client, resolver
 			}
 			req, err := http.NewRequest(
 				"POST",
-				fmt.Sprintf("http://127.0.0.1:8081/flow/%s", child.Function),
+				destURL,
 				bytes.NewBuffer(childRequestBody),
 			)
 			if err != nil {
