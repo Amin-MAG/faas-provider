@@ -13,6 +13,7 @@
 //		DeleteHandler:  handlers.MakeDeleteHandler(clientset),
 //		DeployHandler:  handlers.MakeDeployHandler(clientset),
 //		FunctionReader: handlers.MakeFunctionReader(clientset),
+//		FunctionLister: handlers.MakeFunctionLister(clientset),
 //		ReplicaReader:  handlers.MakeReplicaReader(clientset),
 //		ReplicaUpdater: handlers.MakeReplicaUpdater(clientset),
 //		InfoHandler:    handlers.MakeInfoHandler(),
