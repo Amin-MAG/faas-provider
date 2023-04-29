@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/Amin-MAG/faas-provider/types"
 	"github.com/gorilla/mux"
-	"github.com/openfaas/faas-provider/types"
 )
 
 type testBaseURLResolver struct {
